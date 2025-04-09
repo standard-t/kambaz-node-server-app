@@ -1,4 +1,5 @@
 import * as quizzesDao from "./dao.js";
+import * as questionsDao from "../Questions/dao.js";
 export default function QuizRoutes(app) {
 
 
@@ -12,6 +13,22 @@ export default function QuizRoutes(app) {
         const quizUpdates = req.body;
         const status = await quizzesDao.updateQuiz(quizId, quizUpdates);
         res.send(status);
+    });
+
+    app.get("/api/quizzes/:quizId/questions", async (req, res) => {
+        const { quizId } = req.params;
+        const quizzes = await questionsDao.findQuestionsForQuiz(quizId);
+        res.json(quizzes);
+    });
+
+    app.post("/api/quizzes/:quizId/questions", async (req, res) => {
+        const { quizId } = req.params;
+        const question = {
+            ...req.body,
+            quiz: quizId,
+        };
+        const newQuestion = await questionsDao.createQuestion(question);
+        res.send(newQuestion);
     });
 
 }
