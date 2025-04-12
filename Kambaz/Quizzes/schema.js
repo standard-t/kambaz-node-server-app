@@ -12,6 +12,7 @@ const schema = new mongoose.Schema(
         timeLimit: Number,
         multipleAttempts: Boolean,
         numberOfAttempts: Number,
+        numberOfQuestions: Number,
         showCorrectAnswers: Boolean,
         accessCode: String,
         oneAtATime: Boolean,

@@ -7,6 +7,7 @@ const schema = new mongoose.Schema(
         questionType: String,
         points: Number,
         choices: [String],
+        correctAnswer: String,
         quiz: { type: String, ref: "QuizModel" },
         editing: Boolean
     },

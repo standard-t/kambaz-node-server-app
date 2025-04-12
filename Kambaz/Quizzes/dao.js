@@ -8,8 +8,7 @@ export function findQuizzesForCourse(courseId) {
 }
 
 export function createQuiz(quiz) {
-    const newQuiz = { ...quiz, _id: uuidv4() };
-    return model.create(newQuiz);
+    return model.create(quiz);
 }
 
 export function deleteQuiz(quizId) {
