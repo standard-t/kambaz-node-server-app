@@ -7,6 +7,10 @@ export function findAttemptsForQuiz(quizId) {
 
 }
 
+export function findAttemptsForUser(userId) {
+    return model.find({ user: userId });
+}
+
 export function createAttempt(attempt) {
     const newAttempt = { ...attempt, _id: uuidv4() };
     return model.create(newAttempt);
